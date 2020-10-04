@@ -14,6 +14,7 @@ Player::Player(Ref<Sprite> sprite, Ref<Sprite> aim)
             _magic++;
     };
     _magic_timer = make_ref<Timer>(3000, _magic_callback, true);
+    _hitbox = make_ref<BasicQuad>(0, 0, 32, 32);
 }
 
 void Player::onTouch(Entity *other)
@@ -36,4 +37,9 @@ void Player::onTouch(Entity *other)
 
 void Player::setItem(Chestable *item) {
     _item = item;
+}
+
+void Player::centerHitbox() {
+    auto center = Vector2f {_sprite->position().x() + 32, _sprite->position().y() + 32};
+    _hitbox->setCenter(center);
 }

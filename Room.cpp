@@ -106,7 +106,7 @@ void Room::moveFire(float delta) {
             }
             
             // Check player collisions
-            if ((*fire)->sprite().intersects(_player->sprite())) {
+            if ((*fire)->sprite().intersects(_player->hitbox())) {
                 if ((*fire)->fireType() != Fire::Regular) {
                     _player->lowerHealth();
                     Audio::playSound(g_sounds.at(SO_HURT).get(), 75);

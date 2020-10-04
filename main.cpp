@@ -416,6 +416,9 @@ public:
         // Move fire
         current_room->moveFire(delta);
         
+        // Update player hitbox
+        player->centerHitbox();
+        
         // Check if player is dead
         if (player->health() == 0 && state != Dead) {
             state = Dead;
